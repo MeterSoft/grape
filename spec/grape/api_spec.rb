@@ -2717,13 +2717,8 @@ describe Grape::API do
           'example'
         end
         get '/example'
-        expect(last_response.status).to eq(500)
-        expect(last_response.body).to eq <<-XML
-<?xml version="1.0" encoding="UTF-8"?>
-<error>
-  <message>cannot convert String to xml</message>
-</error>
-XML
+        expect(last_response.status).to eq(200)
+        expect(last_response.body).to eq "example"
       end
       it 'hash' do
         subject.get '/example' do
